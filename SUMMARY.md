@@ -1585,7 +1585,7 @@
         * [Payment Processor](system-design/design-principles-and-patterns/design-pattern/examples/payment-processor.md)
         * [Transaction Dispute](system-design/design-principles-and-patterns/design-pattern/examples/transaction-dispute.md)
         * [Payment Validation](system-design/design-principles-and-patterns/design-pattern/examples/payment-validation.md)
-        * [Financial System Design Patterns](system-design/design-principles-and-patterns/design-pattern/examples/financial-system-design-patterns.md)
+        * [Financial System Design Patterns Interview Notes](system-design/design-principles-and-patterns/design-pattern/examples/financial-system-design-patterns-interview-notes.md)
       * [Design Enhancements](system-design/design-principles-and-patterns/design-pattern/other-concepts/README.md)
         * [Fluent API Design](system-design/design-principles-and-patterns/design-pattern/other-concepts/fluent-api-design/README.md)
           * [Examples](system-design/design-principles-and-patterns/design-pattern/other-concepts/fluent-api-design/examples.md)
