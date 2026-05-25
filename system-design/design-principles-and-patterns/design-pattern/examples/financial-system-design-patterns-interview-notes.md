@@ -427,3 +427,52 @@ Together in real systems:
 * Factory → chooses processor
 * Strategy → processor executes logic
 
+{% code overflow="wrap" %}
+```
+public void process(PaymentRequest request) {
+    PaymentProcessor processor = factory.getProcessor(request.getType()); // Factory
+    processor.processPayment(request); // Strategy
+}
+```
+{% endcode %}
+
+### Abstract Factory Pattern
+
+Abstract Factory is used to create families of related objects. In our system, we used it for multi-country payment processing where each country had its own processor, validator, and fee calculator. This ensured consistency and prevented mixing incompatible components while keeping the system extensible.
+
+Problem It Solves ?
+
+Let’s say we’re building a **multi-country payment system**:
+
+Each country has:
+
+* Payment Processor
+* Validator
+* Fee Calculator
+
+Without Abstract Factory:
+
+{% code overflow="wrap" %}
+```
+if (country.equals("INDIA")) {
+    processor = new IndiaPaymentProcessor();
+    validator = new IndiaValidator();
+    feeCalculator = new IndiaFeeCalculator();
+} else if (country.equals("USA")) {
+    processor = new UsPaymentProcessor();
+    validator = new UsValidator();
+    feeCalculator = new UsFeeCalculator();
+}
+```
+{% endcode %}
+
+#### ❌ Problem:
+
+* Risk of mixing objects (India processor + US validator = bug)
+* Tight coupling
+* Hard to scale
+
+
+
+
+
