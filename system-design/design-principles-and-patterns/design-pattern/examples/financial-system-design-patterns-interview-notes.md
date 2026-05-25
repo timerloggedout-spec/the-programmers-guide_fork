@@ -472,7 +472,302 @@ if (country.equals("INDIA")) {
 * Tight coupling
 * Hard to scale
 
+Solution: Abstract Factory
+
+👉 Ensure **consistent object family creation**
+
+🧱 Structure
+
+```
+AbstractFactory
+   ├── createProcessor()
+   ├── createValidator()
+   ├── createFeeCalculator()
+
+ConcreteFactory (IndiaFactory / USFactory)
+   ├── returns country-specific objects
+```
+
+Example
+
+<pre data-overflow="wrap"><code><strong>// Step 1: Product Interfaces
+</strong>public interface PaymentProcessor {
+    void process();
+}
+
+public interface PaymentValidator {
+    void validate();
+}
+
+public interface FeeCalculator {
+    double calculateFee();
+}
+
+// Step 2: Concrete Implementations (India)
+public class IndiaPaymentProcessor implements PaymentProcessor {
+    public void process() {
+        System.out.println("Processing India payment");
+    }
+}
+
+public class IndiaValidator implements PaymentValidator {
+    public void validate() {
+        System.out.println("Validating India rules");
+    }
+}
+
+public class IndiaFeeCalculator implements FeeCalculator {
+    public double calculateFee() {
+        return 5.0;
+    }
+}
+
+// Step 3: Concrete Implementations (US)
+public class UsPaymentProcessor implements PaymentProcessor {
+    public void process() {
+        System.out.println("Processing US payment");
+    }
+}
+
+// Step 4: Abstract Factory
+public interface PaymentFactory {
+    PaymentProcessor createProcessor();
+    PaymentValidator createValidator();
+    FeeCalculator createFeeCalculator();
+}
+
+// Step 5: Concrete Factories
+@Component("INDIA")
+public class IndiaPaymentFactory implements PaymentFactory {
+
+    public PaymentProcessor createProcessor() {
+        return new IndiaPaymentProcessor();
+    }
+
+    public PaymentValidator createValidator() {
+        return new IndiaValidator();
+    }
+
+    public FeeCalculator createFeeCalculator() {
+        return new IndiaFeeCalculator();
+    }
+}
+
+@Component("USA")
+public class UsPaymentFactory implements PaymentFactory {
+
+    public PaymentProcessor createProcessor() {
+        return new UsPaymentProcessor();
+    }
+
+    public PaymentValidator createValidator() {
+        return new UsValidator();
+    }
+
+    public FeeCalculator createFeeCalculator() {
+        return new UsFeeCalculator();
+    }
+}
+
+// Step 6: Usage
+@Service
+public class PaymentService {
+
+    private final Map&#x3C;String, PaymentFactory> factoryMap;
+
+    public PaymentService(Map&#x3C;String, PaymentFactory> factoryMap) {
+        this.factoryMap = factoryMap;
+    }
+
+    public void process(String country) {
+        PaymentFactory factory = factoryMap.get(country);
+
+        PaymentProcessor processor = factory.createProcessor();
+        PaymentValidator validator = factory.createValidator();
+        FeeCalculator feeCalculator = factory.createFeeCalculator();
+
+        validator.validate();
+        processor.process();
+        System.out.println(feeCalculator.calculateFee());
+    }
+}
+</code></pre>
+
+Factory vs Abstract Factory&#x20;
+
+| Feature | Factory          | Abstract Factory            |
+| ------- | ---------------- | --------------------------- |
+| Creates | One object       | Multiple related objects    |
+| Example | PaymentProcessor | Processor + Validator + Fee |
+| Scope   | Single product   | Product family              |
+
+### Builder Pattern
+
+Builder pattern is used to construct complex objects step-by-step, especially when there are many optional parameters. In our payment system, we used Builder for creating request objects to ensure immutability, readability, and validation before object creation.
+
+👉 In simple terms:
+
+> “Build complex objects step-by-step instead of using huge constructors.”
+
+👉 Builder is commonly used to create immutable objects since fields are `final`
+
+Problem It Solves ?
+
+❌ Telescoping Constructor Problem
+
+```
+new PaymentRequest("A", "B", 1000, "INR", "UPI", null, null, true);
+```
+
+Issues:
+
+* Hard to read
+* Order matters (bug-prone)
+* Optional fields messy
+* Not maintainable
+
+✅ Builder Solution
+
+```
+PaymentRequest request = PaymentRequest.builder()
+    .fromAccount("A")
+    .toAccount("B")
+    .amount(1000)
+    .currency("INR")
+    .paymentType("UPI")
+    .priority(true)
+    .build();
+```
+
+👉 Clean, readable, safe
+
+Structure
+
+```
+Product (PaymentRequest)
+   ↑
+Builder (inner/static class)
+   ↑
+build() → final object
+```
+
+Example
+
+{% code overflow="wrap" %}
+```
+public class PaymentRequest {
+
+    private final String fromAccount;
+    private final String toAccount;
+    private final double amount;
+    private final String currency;
+    private final String paymentType;
+    private final boolean priority;
+
+    private PaymentRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.toAccount = builder.toAccount;
+        this.amount = builder.amount;
+        this.currency = builder.currency;
+        this.paymentType = builder.paymentType;
+        this.priority = builder.priority;
+    }
+
+    public static class Builder {
+        private String fromAccount;
+        private String toAccount;
+        private double amount;
+        private String currency;
+        private String paymentType;
+        private boolean priority;
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder toAccount(String toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder amount(double amount) {
+            this.amount = amount;
+            return this;
+        }
+
+        public Builder currency(String currency) {
+            this.currency = currency;
+            return this;
+        }
+
+        public Builder paymentType(String paymentType) {
+            this.paymentType = paymentType;
+            return this;
+        }
+
+        public Builder priority(boolean priority) {
+            this.priority = priority;
+            return this;
+        }
+
+        public PaymentRequest build() {
+            return new PaymentRequest(this);
+        }
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+}
+```
+{% endcode %}
 
 
 
+Builder vs Constructor
 
+| Constructor              | Builder      |
+| ------------------------ | ------------ |
+| Hard to read             | Readable     |
+| Order matters            | Named fields |
+| Poor for optional fields | Excellent    |
+
+Builder vs Factory
+
+| Builder                            | Factory                        |
+| ---------------------------------- | ------------------------------ |
+| Builds complex object step-by-step | Decides which object to create |
+| Same class                         | Multiple classes               |
+
+### Prototype Pattern
+
+Create new objects by **copying (cloning)** an existing object instead of creating from scratch.
+
+👉 In simple terms:
+
+> “Duplicate an existing object instead of building a new one.”
+
+Problem It Solves ?
+
+❌ Expensive Object Creation
+
+Imagine:
+
+* DB-heavy object initialization
+* complex config loading
+* large nested objects
+
+```
+new PaymentConfig(); // loads rules, limits, fees, etc.
+```
+
+👉 Creating repeatedly = costly
+
+✅ Solution: Clone Existing Object
+
+```
+PaymentConfig copy = original.clone();
+```
+
+👉 Fast + efficient
