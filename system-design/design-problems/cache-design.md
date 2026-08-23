@@ -63,7 +63,7 @@ When storing these objects in a map or cache (e.g., `ConcurrentHashMap` or `Caff
 <table><thead><tr><th width="191.87109375">Component</th><th width="150.5078125">Estimated Size</th><th>Description</th></tr></thead><tbody><tr><td><strong>Key Object</strong></td><td>~40–60 bytes</td><td>UUID or String, including its internal character array</td></tr><tr><td><strong>Map Entry Overhead</strong></td><td>~32–48 bytes</td><td>Bucket pointer, hash, references</td></tr><tr><td><strong>Value Object</strong></td><td>~300–350 bytes</td><td>As estimated above</td></tr><tr><td><strong>References</strong></td><td>~8–16 bytes</td><td>Reference to value and key</td></tr></tbody></table>
 
 **Total per cache entry**:\
-&#xNAN;**\~400–500 bytes** conservatively\
+**\~400–500 bytes** conservatively\
 In worst cases, may grow up to **550–600 bytes**.
 
 ### 4. Total Estimated Memory Usage

@@ -9,13 +9,13 @@ It is standardized under **RFC 6455** and was designed to overcome the limitatio
 ### **How WebSockets Differ from HTTP ?**
 
 * **Connection Lifecycle**\
-  &#xNAN;_&#x48;TTP_: A new TCP connection is created for each request/response cycle (or reused via keep-alive).\
-  &#xNAN;_&#x57;ebSocket_: A single TCP connection is established and remains open until explicitly closed.
+  _&#x48;TTP_: A new TCP connection is created for each request/response cycle (or reused via keep-alive).\
+  _&#x57;ebSocket_: A single TCP connection is established and remains open until explicitly closed.
 * **Communication Direction**\
-  &#xNAN;_&#x48;TTP_: Unidirectional - server responds only when the client requests.\
-  &#xNAN;_&#x57;ebSocket_: Bidirectional - either side can send a message at any moment.
+  _&#x48;TTP_: Unidirectional - server responds only when the client requests.\
+  _&#x57;ebSocket_: Bidirectional - either side can send a message at any moment.
 * **Protocol Upgrade**\
-  &#xNAN;_&#x57;ebSockets_ start as an HTTP request using the `Upgrade` header and then switch the connection to the WebSocket protocol.
+  _&#x57;ebSockets_ start as an HTTP request using the `Upgrade` header and then switch the connection to the WebSocket protocol.
 
 ### **Use Cases**
 

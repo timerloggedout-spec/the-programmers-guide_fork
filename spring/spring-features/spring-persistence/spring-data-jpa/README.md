@@ -71,7 +71,7 @@ Or if we don't explicitly configure it, **Spring Boot auto-detects** based on th
 * This proxy does **not** contain any handwritten logic; instead, it delegates calls to the correct logic.
 
 The key class responsible is:\
-&#xNAN;**`org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean`**
+**`org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean`**
 
 This class creates a `JpaRepositoryFactory`, which then builds a **repository proxy**.
 
@@ -107,7 +107,7 @@ SELECT e FROM Employee e WHERE e.department = :department
 ```
 
 This parsing is powered by:\
-&#xNAN;**`org.springframework.data.repository.query.parser.PartTree`**
+**`org.springframework.data.repository.query.parser.PartTree`**
 
 Spring **does not require you to write the query manually** unless it’s too complex.
 

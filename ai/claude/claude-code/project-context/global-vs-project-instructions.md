@@ -1,0 +1,2 @@
+# Global vs Project Instructions
+

@@ -3,6 +3,28 @@ icon: user-robot
 cover: >-
   https://images.unsplash.com/photo-1475598322381-f1b499717dda?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw4fHx2b2xjYW5vfGVufDB8fHx8MTcyODgxMDg2NHww&ixlib=rb-4.0.3&q=85
 coverY: 0
+layout:
+  width: default
+  cover:
+    visible: true
+    size: full
+    mask: none
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: false
+  pagination:
+    visible: false
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
 ---
 
 # About

@@ -41,7 +41,7 @@ The delay in transmitting data over a network from sender to receiver.
 
 Transmission Delay = (10×8) / 100 = 0.8 seconds\
 Propagation Delay = 3000 / 200000 = 0.015 seconds\
-&#xNAN;_&#x54;otal Latency ≈ 0.815 seconds (815 ms)_
+_&#x54;otal Latency ≈ 0.815 seconds (815 ms)_
 
 #### **Optimization Techniques**
 

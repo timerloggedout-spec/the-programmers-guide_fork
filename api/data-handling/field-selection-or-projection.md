@@ -54,9 +54,9 @@ This technique formalizes field selection in APIs dealing with complex data mode
 
 * The `fields` parameter is an object where the keys are resource types, and the values are comma-separated lists of fields to include for that type.
 * `fields[articles]=title,body` means:\
-  &#xNAN;_&#x46;or the resource type "articles", only include the `title` and `body` fields in the response._
+  _&#x46;or the resource type "articles", only include the `title` and `body` fields in the response._
 * `fields[people]=name` means:\
-  &#xNAN;_&#x46;or the resource type "people", only include the `name` field in the response._
+  _&#x46;or the resource type "people", only include the `name` field in the response._
 {% endhint %}
 
 **3. GraphQL Field Selection**

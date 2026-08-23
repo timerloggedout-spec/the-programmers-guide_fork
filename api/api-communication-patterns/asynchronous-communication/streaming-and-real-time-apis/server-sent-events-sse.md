@@ -6,7 +6,7 @@
 
 * **Protocol Basis:** SSE is built on **HTTP/1.1** and uses the `text/event-stream` MIME type.
 * **Direction of Data Flow:**\
-  &#xNAN;_&#x53;erver → Client_ only (no client-to-server streaming).
+  _&#x53;erver → Client_ only (no client-to-server streaming).
 * **Use Cases:**
   * Real-time notifications
   * Social media live feeds

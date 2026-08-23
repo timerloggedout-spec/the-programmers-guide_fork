@@ -76,7 +76,7 @@ These properties control the behavior and performance of **JMS message listeners
 > Example: If `concurrency=2` and `max-concurrency=6`, the listener will start with 2 threads and can dynamically scale up to 6 if message volume increases.
 
 \
-&#xNAN;**`spring.jms.listener.acknowledge-mode`**
+**`spring.jms.listener.acknowledge-mode`**
 
 Controls **when** and **how** JMS messages are acknowledged:
 

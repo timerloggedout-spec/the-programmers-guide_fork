@@ -52,7 +52,7 @@ The Java standard libraries are like **tools and machines** at the port—convey
 
 Because containers (bytecode) can be handled at any port (JVM), our Java program can run **anywhere**—on any platform that has a compatible JVM.\
 This is what makes Java **truly cross-platform** and explains its slogan:\
-&#xNAN;**“Write Once, Run Anywhere.”**
+**“Write Once, Run Anywhere.”**
 
 ## Why Learn Java ?
 
