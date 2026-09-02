@@ -839,6 +839,7 @@
         * [Method Overriding & Overloading](java/java-basics/oop-basics/methods-and-fields/method-overriding-and-overloading.md)
         * [Variables](java/java-basics/oop-basics/methods-and-fields/variables.md)
       * [Constructors](java/java-basics/oop-basics/constructors.md)
+      * [Static Factory Methods](java/java-basics/oop-basics/static-factory-methods.md)
       * [Access Modifiers](java/java-basics/oop-basics/access-modifiers.md)
     * [Java Keywords](java/java-basics/java-keywords/README.md)
       * [this](java/java-basics/java-keywords/this.md)
