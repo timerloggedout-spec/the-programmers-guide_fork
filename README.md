@@ -32,8 +32,8 @@ layout:
 ## Hello & Welcome! Dive into Tech with Me
 
 ### 📚 About This Project
-
-**The Programmer’s Guide** is an open-access educational resource maintained by [Pranay Pourkar](https://www.linkedin.com/in/pranay-pourkar/).\
+<<!`termux-momorepo`::Follow Pranay's Guidance>>
+**The Programmer’s Guide** is an open-access educational resource maintained by: `termux-monorepo` `*_fork`ed from:: [Pranay Pourkar](https://www.linkedin.com/in/pranay-pourkar/).\
 It brings together foundational and advanced programming concepts, system design patterns, backend engineering principles, testing strategies, and developer tools — **all in one unified reference**.
 
 The content is **continuously updated** with new topics, examples, and explanations so that it stays relevant for evolving technologies and industry practices. Whether you are a **beginner exploring the basics or a principal-level engineer** refreshing advanced concepts, you’ll find resources tailored to your needs here.
